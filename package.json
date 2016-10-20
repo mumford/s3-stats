@@ -1,0 +1,23 @@
+{
+  "name": "s3-stats",
+  "version": "0.0.1",
+  "description": "Log analyzer for AWS S3 buckets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mumford/s3-stats.git"
+  },
+  "author": "Dave Hanlon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mumford/s3-stats/issues"
+  },
+  "homepage": "https://github.com/mumford/s3-stats#readme",
+  "devDependencies": {
+    "async": "^2.1.2",
+    "aws-sdk": "^2.6.10"
+  }
+}
