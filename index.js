@@ -15,8 +15,27 @@ function LogDownloader() {
     }
 
     this.listAllLogs = function(cb) {
-        getLoggingTarget(function(err, targetPrefix) {            
+        getLoggingTarget(function(err, targetPrefix) {
+            var fetchLogs = true;
+            var logList;
+            var continuationToken;
+
+            async.whilst(
+                function() { return fetchLogs; },
+                function(logCallback) {
+                    getLogList(targetPrefix, continuationToken, function(listErr, listData){
+                        console.log('Logs fetched.');
+                        continuationToken = listData.NextContinuationToken;
+                        callback(null, continuationToken != null);
+                    });
+                },
+                function(err, n) {
+                    cb();
+                }
+            );
+
             getLogList(targetPrefix, null, function(listErr, listData) {
+                
                 console.log(listData.Content);
             });
         });
